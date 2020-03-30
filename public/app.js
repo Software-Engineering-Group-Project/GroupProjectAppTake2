@@ -42,8 +42,17 @@ function displayError()
 
 function flushTable()
 {
+    document.querySelectorAll('.options').forEach(item =>{
+        item.style.display = 'none';
+    });
     document.getElementById("nothing-found").style.display = "none";
     document.getElementById("output").innerHTML = "";
+}
+
+function unhideTable()
+{
+    document.getElementById("the-results").style.display = "block";
+    document.getElementById("results-table").style.display = "block";
 }
 
 
@@ -54,30 +63,79 @@ function genericSearch(input)
 {
     input = input.toLowerCase();
 
-    console.log(input);
-
     
-    document.querySelectorAll('.options').forEach(item =>{
-        item.style.display = 'none';
-    });
     flushTable();
 
-
     db.collection("films").where("lowercasename", "==", input).get().then(function(snapshot){
-        if(!snapshot.empty){
-            snapshot.docs.forEach(doc =>{
-                renderResults(doc);
-            });
-        }
-        else{
-            displayError();
-            return;
+        dealWithSnapshotResults(snapshot);
+        if (!snapshot.empty)
+        {
+            unhideTable();
         }
     }
     );
 
-    document.getElementById("the-results").style.display = "block";
-    document.getElementById("results-table").style.display = "block";
 
+}
+
+function searchByGenre(input)
+{
+    flushTable();
+
+    db.collection("films").where("genres", "array-contains", input).get().then(function(snapshot){
+        dealWithSnapshotResults(snapshot);
+        if(!snapshot.empty){
+            unhideTable();
+        }
+    });
+}
+
+function dealWithSnapshotResults(snapshot){
+    if(!snapshot.empty){
+        snapshot.docs.forEach(doc =>{
+            renderResults(doc);
+        });
+    }
+    else{
+        displayError();
+        return;
+    }
+}
+
+
+function findGenres()
+{
+    document.querySelectorAll('.options').forEach(item =>{
+        item.style.display = 'none';
+    });
+
+    document.getElementById("genres-list").innerHTML = "";
+
+    db.collection('genres').orderBy('name').get().then((snapshot) =>{
+        snapshot.docs.forEach(doc => {
+            renderGenre(doc);
+        });
+    });
+
+    document.getElementById("genres-options").style.display = "block";
+    document.getElementById("genres-list").style.display = "block";
+
+
+}
+
+function renderGenre(doc)//will need changing to accommodate looking better
+{
+    let li = document.createElement("li");
+    let name = document.createElement("button");//only a temporary thing to show it works, whoever is making this look not terrible should change this to something else
+    const text = doc.data().name;
+
+    li.setAttribute('data-id', doc.id);
+    name.textContent = text;
+    name.onclick = function(){
+        searchByGenre(text);
+    };
+
+    li.appendChild(name);
+    document.getElementById("genres-list").appendChild(li);
 
 }

@@ -7,8 +7,7 @@ $(document).ready(function(){
         const inputEmail = $("#signup-email").val();
         const inputPassword = $("#signup-password").val();
 
-        auth.createUserWithEmailAndPassword(inputEmail, inputPassword).then(cred =>{
-            console.log(cred.user);
+        auth.createUserWithEmailAndPassword(inputEmail, inputPassword).then(function(){
             const modal = $("#modal-signup");
             M.Modal.getInstance(modal).close();
             document.querySelector("#signup-form").reset();

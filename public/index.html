@@ -34,7 +34,10 @@
 						<a href="#modal-signup" class="modal-trigger">Sign Up</a>
 					</div>
 					<div class="navbar-account signed-in" id="sign-out-button">
-						<a>Sign Out</a>
+						<a href="#">Sign Out</a>
+					</div>
+					<div class="navbar-account signed-in">
+						<a href="#modal-account" class="modal-trigger">Account</a>
 					</div>
 
 				</div>
@@ -80,7 +83,7 @@
 						</div>
 					</div>
 
-					<div class="option">
+					<div class="option" onclick="findGenres();">
 						<div class="img-background">
 							<img src="images/genre.jpg">
 						</div>
@@ -139,7 +142,39 @@
 				</div>
 			</div>
 
-				<!-- Signing up table-->
+			<!--Search results table location-->
+			<div class="options" id="the-results">
+				<table class="content" id="results-table" style="display:none">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Release year</th>
+							<th>Rating</th>
+						</tr>
+					</thead>
+					<tbody id="output">
+			
+					</tbody>
+				</table>
+				<h4 id="nothing-found" style="display:none">Error! No films found.<br></h4>
+			</div>
+
+			<!--Genres displayed--->
+			<div class="options" id="genres-options" style="display:none">
+				<ul id="genres-list"></ul>
+				
+			</div>
+
+
+			<!-- Displaying a film thing -->
+			<div class="options" id="film-page" style="display:none"><!--This constantly putting style in it probably should be removed at some stage and the Style.css just updated-->
+
+			</div>
+			
+
+
+			<!--MODALS-->
+			<!-- Signing up table-->
 			<div class="modal" id="modal-signup">
 				<div class="modal-content">
 					<h4>Sign Up</h4>
@@ -176,21 +211,12 @@
 				</div>
 			</div>
 
-			<!--Search results table location-->
-			<div class="options" id="the-results">
-				<table class="content" id="results-table" style="display:none">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Release year</th>
-							<th>Rating</th>
-						</tr>
-					</thead>
-					<tbody id="output">
-
-					</tbody>
-				</table>
-				<h4 id="nothing-found" style="display:none">Error! No films found.<br></h4>
+			<!---Account details modal-->
+			<div class="modal" id="modal-account">
+				<div class="modal-content">
+					<h4>Account details</h4>
+					<div class="account-details"></div>
+				</div>
 			</div>
 
 		</div>
