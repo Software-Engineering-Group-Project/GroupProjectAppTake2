@@ -13,12 +13,18 @@ function renderResults(doc) //needs minor modifications to display more data fro
     let name = document.createElement("td");
     let relYear = document.createElement("td");
     let rating = document.createElement("td");
+    let nameLink = document.createElement("a");
 
     tr.setAttribute("data-id", doc.id);
-    name.textContent = doc.data().name;
+    nameLink.textContent = doc.data().name;
     relYear.textContent = doc.data().relYear;
     rating.textContent = doc.data().opinion;
+    nameLink.onclick = function(){
+        renderFilm(doc);
+    };
+    nameLink.href= "#";
 
+    name.appendChild(nameLink);
     tr.appendChild(name);
     tr.appendChild(relYear);
     tr.appendChild(rating);
@@ -138,4 +144,18 @@ function renderGenre(doc)//will need changing to accommodate looking better
     li.appendChild(name);
     document.getElementById("genres-list").appendChild(li);
 
+}
+
+function renderFilm(doc)
+{
+    console.log("This is working");
+    flushTable();
+    document.querySelectorAll('.options').forEach(item =>{
+        item.style.display = 'none';
+    });
+
+    document.getElementById("film-title").innerHTML = doc.data().name;
+    document.getElementById("film-description").innerHTML = doc.data().description;
+
+    document.getElementById("film-page").style.display = "block";
 }
