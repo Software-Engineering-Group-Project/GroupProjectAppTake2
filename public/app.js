@@ -3,7 +3,6 @@ function randomFilm()
     
 }
 
-
 // rendering methods
 
 function renderResults(doc) //needs minor modifications to display more data from the document, albeit this is trivial
@@ -29,8 +28,8 @@ function renderResults(doc) //needs minor modifications to display more data fro
     tr.appendChild(rating);
 
     document.getElementById("output").appendChild(tr);
-
 }
+
 
 //another method for dealing with displaying a page about a film when said film is clicked in a results table
 
@@ -42,7 +41,6 @@ function displayError()
     document.getElementById("the-results").style.display = "block";
     document.getElementById("results-table").style.display = "none";
     document.getElementById("nothing-found").style.display = "block";
-
 }
 
 function flushTable()
@@ -61,9 +59,11 @@ function unhideTable()
 }
 
 
-
 //some of the code here can definitely be re-used and would probably be best placed in a function of its own for
 //all searches to use, rather than re-writing it repeatedly
+
+// Generic Search
+
 function genericSearch(input)
 {
     input = input.toLowerCase();
@@ -79,9 +79,9 @@ function genericSearch(input)
         }
     }
     );
-
-
 }
+
+// Genre Search  ---------------------------------------------------------------------------------------
 
 function searchByGenre(input)
 {
@@ -107,7 +107,6 @@ function dealWithSnapshotResults(snapshot){
     }
 }
 
-
 function findGenres()
 {
     document.querySelectorAll('.options').forEach(item =>{
@@ -124,8 +123,6 @@ function findGenres()
 
     document.getElementById("genres-options").style.display = "block";
     document.getElementById("genres-list").style.display = "block";
-
-
 }
 
 function renderGenre(doc)//will need changing to accommodate looking better
@@ -142,7 +139,6 @@ function renderGenre(doc)//will need changing to accommodate looking better
 
     li.appendChild(name);
     document.getElementById("genres-list").appendChild(li);
-
 }
 
 function renderFilm(doc)
@@ -158,3 +154,226 @@ function renderFilm(doc)
 
     document.getElementById("film-page").style.display = "block";
 }
+
+// New Releases Search ------------------------------------------------------------------------------
+
+function searchByNewReleases(input)
+{
+    flushTable();
+
+    db.collection("films").where("new-releases", "array-contains", input).get().then(function(snapshot){
+        dealWithSnapshotResults(snapshot);
+        if(!snapshot.empty){
+            unhideTable();
+        }
+    });
+}
+
+function dealWithSnapshotResults(snapshot){
+    if(!snapshot.empty){
+        snapshot.docs.forEach(doc =>{
+            renderResults(doc);
+        });
+    }
+    else{
+        displayError();
+        return;
+    }
+}
+
+function findNewReleases()
+{
+    document.querySelectorAll('.options').forEach(item =>{
+        item.style.display = 'none';
+    });
+
+    document.getElementById("new-releases-list").innerHTML = "";
+
+    db.collection('new-releases').orderBy('name').get().then((snapshot) =>{
+        snapshot.docs.forEach(doc => {
+            renderNewReleases(doc);
+        });
+    });
+
+    document.getElementById("new-releases-options").style.display = "block";
+    document.getElementById("new-releases-list").style.display = "block";
+}
+
+function renderNewReleases(doc)//will need changing to accommodate looking better
+{
+    let li = document.createElement("li");
+    let name = document.createElement("button");//only a temporary thing to show it works, whoever is making this look not terrible should change this to something else
+    const text = doc.data().name;
+
+    li.setAttribute('data-id', doc.id);
+    name.textContent = text;
+    name.onclick = function(){
+        searchByNewReleases(text);
+    };
+
+    li.appendChild(name);
+    document.getElementById("new-releases-list").appendChild(li);
+}
+
+function renderFilm(doc)
+{
+    console.log("This is working");
+    flushTable();
+    document.querySelectorAll('.options').forEach(item =>{
+        item.style.display = 'none';
+    });
+
+    document.getElementById("film-title").innerHTML = doc.data().name;
+    document.getElementById("film-description").innerHTML = doc.data().description;
+
+    document.getElementById("film-page").style.display = "block";
+}
+
+// Popular Movies Serach  ---------------------------------------------------------------------------------------
+
+function searchByPopularMovies(input)
+{
+    flushTable();
+
+    db.collection("films").where("popular-movies", "array-contains", input).get().then(function(snapshot){
+        dealWithSnapshotResults(snapshot);
+        if(!snapshot.empty){
+            unhideTable();
+        }
+    });
+}
+
+function dealWithSnapshotResults(snapshot){
+    if(!snapshot.empty){
+        snapshot.docs.forEach(doc =>{
+            renderResults(doc);
+        });
+    }
+    else{
+        displayError();
+        return;
+    }
+}
+
+function findPopularMovies()
+{
+    document.querySelectorAll('.options').forEach(item =>{
+        item.style.display = 'none';
+    });
+
+    document.getElementById("popular-movies-list").innerHTML = "";
+
+    db.collection('popular-movies').orderBy('name').get().then((snapshot) =>{
+        snapshot.docs.forEach(doc => {
+            renderPopularMovies(doc);
+        });
+    });
+
+    document.getElementById("popular-movies-options").style.display = "block";
+    document.getElementById("popular-movies-list").style.display = "block";
+}
+
+function renderPopularMovies(doc)//will need changing to accommodate looking better
+{
+    let li = document.createElement("li");
+    let name = document.createElement("button");//only a temporary thing to show it works, whoever is making this look not terrible should change this to something else
+    const text = doc.data().name;
+
+    li.setAttribute('data-id', doc.id);
+    name.textContent = text;
+    name.onclick = function(){
+        searchByPopularMovies(text);
+    };
+
+    li.appendChild(name);
+    document.getElementById("popular-movies-list").appendChild(li);
+}
+
+function renderFilm(doc)
+{
+    console.log("This is working");
+    flushTable();
+    document.querySelectorAll('.options').forEach(item =>{
+        item.style.display = 'none';
+    });
+
+    document.getElementById("film-title").innerHTML = doc.data().name;
+    document.getElementById("film-description").innerHTML = doc.data().description;
+
+    document.getElementById("film-page").style.display = "block";
+}
+
+// Top Rated Search ---------------------------------------------------------------------------------------
+
+function searchByTopRated(input)
+{
+    flushTable();
+
+    db.collection("films").where("top-rated", "array-contains", input).get().then(function(snapshot){
+        dealWithSnapshotResults(snapshot);
+        if(!snapshot.empty){
+            unhideTable();
+        }
+    });
+}
+
+function dealWithSnapshotResults(snapshot){
+    if(!snapshot.empty){
+        snapshot.docs.forEach(doc =>{
+            renderResults(doc);
+        });
+    }
+    else{
+        displayError();
+        return;
+    }
+}
+
+function findTopRated()
+{
+    document.querySelectorAll('.options').forEach(item =>{
+        item.style.display = 'none';
+    });
+
+    document.getElementById("top-rated-list").innerHTML = "";
+
+    db.collection('top-rated').orderBy('name').get().then((snapshot) =>{
+        snapshot.docs.forEach(doc => {
+            renderTopRated(doc);
+        });
+    });
+
+    document.getElementById("top-rated-options").style.display = "block";
+    document.getElementById("top-rated-list").style.display = "block";
+}
+
+function renderTopRated(doc)//will need changing to accommodate looking better
+{
+    let li = document.createElement("li");
+    let name = document.createElement("button");//only a temporary thing to show it works, whoever is making this look not terrible should change this to something else
+    const text = doc.data().name;
+
+    li.setAttribute('data-id', doc.id);
+    name.textContent = text;
+    name.onclick = function(){
+        searchByTopRated(text);
+    };
+
+    li.appendChild(name);
+    document.getElementById("top-rated-list").appendChild(li);
+}
+
+function renderFilm(doc)
+{
+    console.log("This is working");
+    flushTable();
+    document.querySelectorAll('.options').forEach(item =>{
+        item.style.display = 'none';
+    });
+
+    document.getElementById("film-title").innerHTML = doc.data().name;
+    document.getElementById("film-description").innerHTML = doc.data().description;
+
+    document.getElementById("film-page").style.display = "block";
+}
+
