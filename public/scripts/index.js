@@ -1,5 +1,7 @@
+
 const allSignedOut = document.querySelectorAll('.signed-out');
 const allSignedIn = document.querySelectorAll('.signed-in');
+const accDetails = document.querySelector(".account-details");
 
 function renderHome()//will need some updating once a thing for account settings is added
 {
@@ -11,10 +13,16 @@ function renderHome()//will need some updating once a thing for account settings
 
 const setupUI = (user) =>{
     if (user){
+        const html = `<div>Logged in as ${user.email}</div>`;
+        accDetails.innerHTML = html;
+
+        //toggle navbar
         allSignedIn.forEach(item => item.style.display = 'block');
         allSignedOut.forEach(item => item.style.display = 'none');
     }
     else{
+
+        //toggle navbar
         allSignedIn.forEach(item => item.style.display = 'none');
         allSignedOut.forEach(item => item.style.display = 'block');
     }
