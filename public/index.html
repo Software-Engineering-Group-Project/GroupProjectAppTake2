@@ -51,7 +51,7 @@
 	</div>
 	<!-- End navigation bar -->
 
-	<div class="wrapper">
+	<div class="wrapper options" id="home-options">
 
 		<!-- Top Container -->
 		<section class="top-container">
@@ -127,7 +127,7 @@
 		<section class="boxes">
 		
 			<!-- Genres -->
-			<a href="#movie-genres">
+			<a href="#movie-genres" onclick="findGenres();">
 				<div class="genre-box">
 					<img class="icons" src="images/genre-logo 2.png">
 					<h5>Movie Genres</h5>
@@ -172,13 +172,6 @@
 </body>
 
 
-
-<!-- Footer -->
-<footer>
-	<p>SE Group Project &copy; 2020</p>
-</footer>
-
-
 <!-- Tables -->
 
 <!-- Signing up table-->
@@ -220,9 +213,7 @@
 </div>
 
 <!-- Search Results table -->
-<div class="modal" id="modal-search">
-	<div class="modal-content">
-		<div class="options" id="the-results"></div>
+	<div class="options" id="the-results">
 		<div class="row">
 			<div class="col s12">
 				<h4>Search Results...</h4>
@@ -249,14 +240,33 @@
 			</div>
 			<div class="col s6 center-align">
 				<!-- TODO: Get thumbnail link from database or have local images to display for each movie -->
-				<img src="https://i.pinimg.com/236x/4b/94/ae/4b94ae114906225575f664e791d5d23e.jpg">
+				<img src="https://i.pinimg.com/236x/4b/94/ae/4b94ae114906225575f664e791d5d23e.jpg" style="display:none"> <!--temporary-->
 			</div>
 		</div>
 		<h5 id="nothing-found" style="display:none">No films matchting search query<br></h5>
 	</div>
 </div>
+
+<!--Genres displayed--->
+<div class="options" id="genres-options" style="display:none">
+	<ul id="genres-list"></ul>
 </div>
 
+
+<!-- Displaying a film thing -->
+<div class="options" id="film-page" style="display:none"><!--This constantly putting style in it probably should be removed at some stage and the Style.css just updated-->
+	<h2 id="film-title"></h2>
+	<img id=film-image/>
+	<ul id="film-details"></ul>
+	<p id="film-description"></p>
+</div>
+			
+
+
+<!-- Footer moved to bottom to ensure it is always at the bottom, needs further work to get it to stay at the bottom of screen-->
+<footer>
+	<p>SE Group Project &copy; 2020</p>
+</footer>
 
 <!-- Scripts -->
 

@@ -105,6 +105,7 @@ function dealWithSnapshotResults(snapshot){
 
 function findGenres()
 {
+    console.log("This is working");
     document.querySelectorAll('.options').forEach(item =>{
         item.style.display = 'none';
     });
@@ -165,18 +166,6 @@ function searchByNewReleases(input)
     });
 }
 
-function dealWithSnapshotResults(snapshot){
-    if(!snapshot.empty){
-        snapshot.docs.forEach(doc =>{
-            renderResults(doc);
-        });
-    }
-    else{
-        displayError();
-        return;
-    }
-}
-
 function findNewReleases()
 {
     document.querySelectorAll('.options').forEach(item =>{
@@ -211,20 +200,6 @@ function renderNewReleases(doc)//will need changing to accommodate looking bette
     document.getElementById("new-releases-list").appendChild(li);
 }
 
-function renderFilm(doc)
-{
-    console.log("This is working");
-    flushTable();
-    document.querySelectorAll('.options').forEach(item =>{
-        item.style.display = 'none';
-    });
-
-    document.getElementById("film-title").innerHTML = doc.data().name;
-    document.getElementById("film-description").innerHTML = doc.data().description;
-
-    document.getElementById("film-page").style.display = "block";
-}
-
 // Popular Movies Serach  ---------------------------------------------------------------------------------------
 
 function searchByPopularMovies(input)
@@ -237,18 +212,6 @@ function searchByPopularMovies(input)
             unhideTable();
         }
     });
-}
-
-function dealWithSnapshotResults(snapshot){
-    if(!snapshot.empty){
-        snapshot.docs.forEach(doc =>{
-            renderResults(doc);
-        });
-    }
-    else{
-        displayError();
-        return;
-    }
 }
 
 function findPopularMovies()
@@ -285,20 +248,6 @@ function renderPopularMovies(doc)//will need changing to accommodate looking bet
     document.getElementById("popular-movies-list").appendChild(li);
 }
 
-function renderFilm(doc)
-{
-    console.log("This is working");
-    flushTable();
-    document.querySelectorAll('.options').forEach(item =>{
-        item.style.display = 'none';
-    });
-
-    document.getElementById("film-title").innerHTML = doc.data().name;
-    document.getElementById("film-description").innerHTML = doc.data().description;
-
-    document.getElementById("film-page").style.display = "block";
-}
-
 // Top Rated Search ---------------------------------------------------------------------------------------
 
 function searchByTopRated(input)
@@ -311,18 +260,6 @@ function searchByTopRated(input)
             unhideTable();
         }
     });
-}
-
-function dealWithSnapshotResults(snapshot){
-    if(!snapshot.empty){
-        snapshot.docs.forEach(doc =>{
-            renderResults(doc);
-        });
-    }
-    else{
-        displayError();
-        return;
-    }
 }
 
 function findTopRated()
@@ -358,18 +295,3 @@ function renderTopRated(doc)//will need changing to accommodate looking better
     li.appendChild(name);
     document.getElementById("top-rated-list").appendChild(li);
 }
-
-function renderFilm(doc)
-{
-    console.log("This is working");
-    flushTable();
-    document.querySelectorAll('.options').forEach(item =>{
-        item.style.display = 'none';
-    });
-
-    document.getElementById("film-title").innerHTML = doc.data().name;
-    document.getElementById("film-description").innerHTML = doc.data().description;
-
-    document.getElementById("film-page").style.display = "block";
-}
-
