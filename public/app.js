@@ -58,11 +58,7 @@ function unhideTable()
     document.getElementById("results-table").style.display = "block";
 }
 
-
-//some of the code here can definitely be re-used and would probably be best placed in a function of its own for
-//all searches to use, rather than re-writing it repeatedly
-
-// Generic Search
+// Generic Search ------------------------------------------------------------------------------------
 
 function genericSearch(input)
 {
