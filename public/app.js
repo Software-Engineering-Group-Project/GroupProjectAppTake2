@@ -8,20 +8,28 @@ function randomFilm()
 function renderResults(doc) //needs minor modifications to display more data from the document, albeit this is trivial
 {
     let tr = document.createElement("tr");
+    let picture = document.createElement("td");
     let name = document.createElement("td");
     let relYear = document.createElement("td");
     let rating = document.createElement("td");
     let nameLink = document.createElement("a");
+    let imgLink = document.createElement("img");
 
     tr.setAttribute("data-id", doc.id);
     nameLink.textContent = doc.data().name;
     relYear.textContent = doc.data().relYear;
     rating.textContent = doc.data().opinion;
+    imgLink.textContent = doc.data().image;
+
     nameLink.onclick = function(){
         renderFilm(doc);
     };
     nameLink.href= "#";
 
+    imgLink.src=imgLink.textContent;
+
+    picture.appendChild(imgLink);
+    tr.appendChild(picture);
     name.appendChild(nameLink);
     tr.appendChild(name);
     tr.appendChild(relYear);
@@ -125,7 +133,9 @@ function findGenres()
 function renderGenre(doc)//will need changing to accommodate looking better
 {
     let li = document.createElement("li");
-    let name = document.createElement("button");//only a temporary thing to show it works, whoever is making this look not terrible should change this to something else
+    let br = document.createElement("br");
+    let name = document.createElement("a");
+    name.className = 'btn-large';
     const text = doc.data().name;
 
     li.setAttribute('data-id', doc.id);
@@ -135,6 +145,7 @@ function renderGenre(doc)//will need changing to accommodate looking better
     };
 
     li.appendChild(name);
+    li.appendChild(br.cloneNode());
     document.getElementById("genres-list").appendChild(li);
 }
 
@@ -146,6 +157,7 @@ function renderFilm(doc)
         item.style.display = 'none';
     });
 
+    document.getElementById("film-image").innerHTML = doc.data().image;
     document.getElementById("film-title").innerHTML = doc.data().name;
     document.getElementById("film-description").innerHTML = doc.data().description;
 
