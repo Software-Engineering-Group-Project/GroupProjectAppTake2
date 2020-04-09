@@ -289,7 +289,7 @@ input::-webkit-input-placeholder {
 }
 
 
-/*----------------- Table -----------------*/
+/*----------------- Results Table -----------------*/
 
 #results-table {
     width: 100%;
@@ -308,7 +308,7 @@ input::-webkit-input-placeholder {
 }
 
 #output>tr>td>img {
-    max-width: 40vh;
+    max-width: 25vh;
     min-width: 2vh;
 }
 
@@ -319,6 +319,17 @@ input::-webkit-input-placeholder {
 
 /*----------------- Genre Buttons -----------------*/
 
+#genres-list>ul {
+    margin: 0 auto;
+    text-align: center;
+    column-gap: 20px;
+}
+
+#genres-list>li {
+    display: inline-block;
+    vertical-align: top;
+}
+
 .genre-btn {
     transition-duration: 0.5s;
     background-color: white;
@@ -326,14 +337,38 @@ input::-webkit-input-placeholder {
     color: black;
     border: 2px solid black;
     padding: 15px 35px;
-    min-width: 20%;
-    position: absolute;
+    font-size: 2vw;
+    position: sticky;
 }
 
 .genre-btn:hover {
     background-color: black;
     color: white;
     text-decoration: none;
+}
+
+
+/*----------------- Film Page -----------------*/
+
+#film-page {
+    padding: 10px 10px;
+}
+
+#film-page>ul {
+    list-style-type: none;
+}
+
+#film-page>img {
+    max-width: 25vh;
+    min-width: 2vh;
+}
+
+#film-page>ul>li>h4 {
+    font-size: 3vw;
+}
+
+#film-page>ul>li>p {
+    font-size: 2vw;
 }
 
 
