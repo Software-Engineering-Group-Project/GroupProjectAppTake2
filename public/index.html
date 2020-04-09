@@ -84,7 +84,7 @@
             <div class="top-box top-box-a">
                 <div class="search-box">
 
-                    <img class="icons" src="images/search-icon.png">
+                    <img class="icons" src="images/search-icon2.png">
                     <h5>Search Movies</h5>
                     <p style="padding:10px">We see which movies are watched more than others and we put them into a list. Find a list of the most watched and popular movies right here.</p>
 
@@ -126,7 +126,7 @@
             </a>
 
             <!-- New Releases -->
-            <a href="#new-releases">
+            <a href="#new-releases" onclick="findNewReleases();">
                 <div class="newrel-box">
                     <img class="icons" src="images/new-movies-logo 2.png">
                     <h5>New Releases</h5>
@@ -135,7 +135,7 @@
             </a>
 
             <!-- Popular -->
-            <a href="#popular-movies">
+            <a href="#popular-movies" onclick="findPopularMovies();">
                 <div class="popular-box">
                     <img class="icons" src="images/popular-logo 2.png">
                     <h5>Popular Movies</h5>
@@ -145,7 +145,7 @@
 
             <!-- Top rated -->
             <a href="#top-rated">
-                <div class="toprated-box">
+                <div class="toprated-box" onclick="findTopRated();">
                     <img class="icons" src="images/top-rated-logo 2.png">
                     <h5>Top Rated</h5>
                     <p>We get ratings from several different sources and list our movies according to their rating. If you are looking for the best rated movies, this is the place for you.</p>
@@ -204,7 +204,7 @@
         <div class="col s12">
             <h4>Search Results...</h4>
         </div>
-        <div class="col s12">
+        <div class="col s6">
             <table class="content highlight" id="results-table" style="display:none">
                 <thead>
                     <tr>
@@ -244,10 +244,34 @@
 <!-- Displaying a film thing -->
 <div class="options" id="film-page" style="display:none">
     <!--This constantly putting style in it probably should be removed at some stage and the Style.css just updated-->
-    <h2 id="film-title"></h2>
-    <img id=film-image/>
-    <ul id="film-details"></ul>
-    <p id="film-description"></p>
+    <div class="col s6" id="film-left-side">
+        <h2 id="film-title"></h2>
+        <img id="film-image">
+    </div>
+    <div class="col s6" id="film-right-side">
+        <ul id="film-details"></ul>
+        <li>
+            <h4>Director</h4><br>
+            <p id="film-directors"></p>
+        </li>
+        <li>
+            <h4>Release Year</h4><br>
+            <p id="film-relYear"></p>
+        </li>
+        <li>
+            <h4>Age Rating</h4><br>
+            <p id="film-ageRating"></p>
+        </li>
+        <li>
+            <h4>Description</h4><br>
+            <p id="film-description"></p>
+        </li>
+        <li>
+            <h4>Starring</h4><br>
+            <p id="film-starring"></p>
+        </li>
+    </div>
+
 </div>
 
 

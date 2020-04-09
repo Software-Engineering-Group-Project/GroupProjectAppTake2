@@ -25,7 +25,12 @@ function renderResults(doc) //needs minor modifications to display more data fro
     nameLink.onclick = function() {
         renderFilm(doc);
     };
+
     nameLink.href = "#";
+
+    imgLink.onclick = function() {
+        renderFilm(doc);
+    };
 
     imgLink.src = imgLink.textContent;
 
@@ -137,7 +142,7 @@ function renderGenre(doc) //will need changing to accommodate looking better
         searchByGenre(text);
     };
 
-    li.style.padding = "20px 10px";
+    li.style.padding = "3vw 2vw";
 
     li.appendChild(name);
     li.appendChild(br.cloneNode());
@@ -151,12 +156,19 @@ function renderFilm(doc) {
         item.style.display = 'none';
     });
 
-    document.getElementById("film-image").innerHTML = doc.data().image;
+
     document.getElementById("film-title").innerHTML = doc.data().name;
+    document.getElementById("film-image").innerHTML = doc.data().image;
+
+    document.getElementById("film-directors").innerHTML = doc.data().directors;
+    document.getElementById("film-relYear").innerHTML = doc.data().relYear;
+    document.getElementById("film-ageRating").innerHTML = doc.data().ageRating;
     document.getElementById("film-description").innerHTML = doc.data().description;
+    document.getElementById("film-starring").innerHTML = doc.data().starring;
+
+
 
     document.getElementById("film-page").style.display = "block";
-
 }
 
 // New Releases Search ------------------------------------------------------------------------------
