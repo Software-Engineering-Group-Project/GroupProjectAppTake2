@@ -1,6 +1,4 @@
-function randomFilm() {
-
-}
+function randomFilm() {}
 
 // rendering methods
 
@@ -161,9 +159,9 @@ function renderFilm(doc) {
     document.getElementById("film-image").innerHTML = doc.data().image;
 
     document.getElementById("film-directors").innerHTML = doc.data().directors;
+    document.getElementById("film-description").innerHTML = doc.data().description;
     document.getElementById("film-relYear").innerHTML = doc.data().relYear;
     document.getElementById("film-ageRating").innerHTML = doc.data().ageRating;
-    document.getElementById("film-description").innerHTML = doc.data().description;
     document.getElementById("film-starring").innerHTML = doc.data().starring;
 
 

@@ -106,7 +106,7 @@
                     <img class="icons" src="images/choose-for-me-logo 2.png">
                     <h5>Random Movie</h5>
                     <p style="padding:10px">You dont know what to watch? Let us choose for you. We will select a random movie for you to watch. If you don't like it, try again.</p>
-                    <a href="#" onClick="randomFilm();" class="random-search-btn">Find a Random Movie</a>
+                    <a href="#" onclick="randomFilm();" class="random-search-btn">Find a Random Movie</a>
                 </div>
             </div>
 
@@ -244,32 +244,37 @@
 <!-- Displaying a film thing -->
 <div class="options" id="film-page" style="display:none">
     <!--This constantly putting style in it probably should be removed at some stage and the Style.css just updated-->
-    <div class="col s6" id="film-left-side">
-        <h2 id="film-title"></h2>
-        <img id="film-image">
-    </div>
-    <div class="col s6" id="film-right-side">
-        <ul id="film-details"></ul>
-        <li>
-            <h4>Director</h4><br>
-            <p id="film-directors"></p>
-        </li>
-        <li>
-            <h4>Release Year</h4><br>
-            <p id="film-relYear"></p>
-        </li>
-        <li>
-            <h4>Age Rating</h4><br>
-            <p id="film-ageRating"></p>
-        </li>
-        <li>
-            <h4>Description</h4><br>
-            <p id="film-description"></p>
-        </li>
-        <li>
-            <h4>Starring</h4><br>
-            <p id="film-starring"></p>
-        </li>
+    <div class="row">
+        <div class="col s12" id="film-top">
+            <h2 id="film-title"></h2>
+        </div>
+        <div class="col s6" id="film-left-side">
+            <img id="film-image">
+        </div>
+        <div class="col s6" id="film-right-side">
+            <ul id="film-details">
+                <li>
+                    <h4>Director</h4>
+                    <p id="film-directors"></p>
+                </li>
+                <li>
+                    <h4>Description</h4>
+                    <p id="film-description"></p>
+                </li>
+                <li>
+                    <h4>Release Year</h4>
+                    <p id="film-relYear"></p>
+                </li>
+                <li>
+                    <h4>Age Rating</h4>
+                    <p id="film-ageRating"></p>
+                </li>
+                <li>
+                    <h4>Starring</h4>
+                    <p id="film-starring"></p>
+                </li>
+            </ul>
+        </div>
     </div>
 
 </div>
