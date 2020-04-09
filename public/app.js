@@ -156,7 +156,7 @@ function renderFilm(doc) {
 
 
     document.getElementById("film-title").innerHTML = doc.data().name;
-    document.getElementById("film-image").innerHTML = doc.data().image;
+    document.getElementById("film-image").src = doc.data().image;
 
     document.getElementById("film-directors").innerHTML = doc.data().directors;
     document.getElementById("film-description").innerHTML = doc.data().description;
