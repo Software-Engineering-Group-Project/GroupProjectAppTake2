@@ -288,6 +288,55 @@ input::-webkit-input-placeholder {
     color: black;
 }
 
+
+/*----------------- Table -----------------*/
+
+#results-table {
+    width: 100%;
+    text-align: center;
+    grid-gap: 30px;
+}
+
+#results-table>thead>tr>th {
+    text-align: center;
+}
+
+#output>tr>td {
+    padding: 20px;
+    text-align: center;
+    font-size: 2vw;
+}
+
+#output>tr>td>img {
+    max-width: 40vh;
+    min-width: 2vh;
+}
+
+#output>tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+/*----------------- Genre Buttons -----------------*/
+
+.genre-btn {
+    transition-duration: 0.5s;
+    background-color: white;
+    text-align: center;
+    color: black;
+    border: 2px solid black;
+    padding: 15px 35px;
+    min-width: 20%;
+    position: absolute;
+}
+
+.genre-btn:hover {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
+
 /*----------------- Footer -----------------*/
 
 footer {
@@ -296,4 +345,5 @@ footer {
     color: #fff;
     text-align: center;
     padding: 15px;
+    bottom: 0;
 }
