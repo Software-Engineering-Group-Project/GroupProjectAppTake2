@@ -84,7 +84,7 @@
             <div class="top-box top-box-a">
                 <div class="search-box">
 
-                    <img class="icons" src="images/search-icon2.png">
+                    <img class="icons" src="images/search-icon.png">
                     <h5>Search Movies</h5>
                     <p style="padding:10px">We see which movies are watched more than others and we put them into a list. Find a list of the most watched and popular movies right here.</p>
 
@@ -368,9 +368,15 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('input.autocomplete').autocomplete({
-            // TODO: Link film names data from database to here
             data: {
-                'Driven': 'Driven'
+                'Driven': 'Driven',
+                'Lady in the Water': 'Lady in the water',
+                'The Dark Knight Rises': 'The Dark Knight Rises',
+                'Avatar': 'Avatar',
+                'Ocean\'s Eleven': 'Ocean\'s Eleven',
+                'Inception': 'Inception',
+                'Fatal Deviation': 'Fatal Deviation',
+                'The Avengers': 'The Avengers'
             },
         });
     });
